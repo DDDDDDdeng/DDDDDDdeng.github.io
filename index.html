@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziyu Deng - Geosciences at Virginia Tech</title>
+    <style>
+        /* 基础排版 - 模仿 VT 官网的清晰无衬线字体 */
+        body {
+            font-family: Arial, Helvetica, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4; /* 浅灰色背景，突出白色内容框 */
+        }
+        
+        /* 顶部官方感 Header */
+        header {
+            background-color: #861F41; /* VT Maroon */
+            color: #fff;
+            padding: 20px 0;
+            border-bottom: 5px solid #E87722; /* VT Burnt Orange */
+        }
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+        .header-content h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        /* 专门设置 Header 里的链接颜色为白色 */
+        .header-content h1 a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .header-content h1 a:hover {
+            color: #E87722; /* 鼠标悬停时变成亮橙色 */
+            text-decoration: underline;
+        }
+
+        /* 主体布局 - 两栏式 */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            display: flex;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        /* 左侧边栏 - 照片与联系方式 */
+        .sidebar {
+            flex: 1;
+            max-width: 280px;
+            background: #fff;
+            padding: 25px;
+            border-top: 4px solid #861F41;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            align-self: flex-start;
+            position: sticky;
+            top: 20px;
+        }
+        .profile-img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .sidebar h2 {
+            margin: 0 0 5px 0;
+            color: #333;
+            font-size: 1.6rem;
+            border: none;
+            padding: 0;
+        }
+        .sidebar p.title {
+            color: #861F41;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin: 0 0 15px 0;
+        }
+        .sidebar-info {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .sidebar-info strong {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        /* 右侧主内容区 */
+        .main-content {
+            flex: 3;
+            background: #fff;
+            padding: 35px 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* 顶部导航菜单 */
+        nav {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        nav a {
+            color: #555;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #E87722;
+        }
+
+        /* 标题样式 */
+        .main-content h2 {
+            color: #861F41;
+            font-size: 1.5rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E87722; 
+        }
+        .main-content h2:first-of-type {
+            margin-top: 0;
+        }
+        .main-content h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        /* 列表与文本 */
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            margin-top: 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* 链接默认颜色 */
+        a {
+            color: #861F41;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #E87722;
+        }
+
+        /* 按钮 */
+        .btn {
+            display: block;
+            text-align: center;
+            background: #861F41;
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #E87722;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* 报告列表样式 */
+        .pub-list {
+            list-style: none;
+            padding: 0;
+        }
+        .pub-list li {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background: #fafafa;
+            border-left: 3px solid #861F41;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* 响应式设计：手机上自动变为单列 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                max-width: 100%;
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部 Header -->
+<header>
+    <div class="header-content">
+        <h1>
+            <!-- 这里加上了系里和学校的链接 -->
+            <a href="https://geos.vt.edu/" target="_blank">Department of Geosciences</a> | 
+            <a href="https://www.vt.edu/" target="_blank">Virginia Tech</a>
+        </h1>
+    </div>
+</header>
+
+<div class="container">
+    
+    <!-- 左侧边栏 (Sidebar) -->
+    <aside class="sidebar">
+        <!-- 替换成你的照片 -->
+        <img src="Ziyu picture 1.jpg" alt="Ziyu Deng" class="profile-img">
+        
+        <h2>Ziyu Deng</h2>
+        <p class="title">Ph.D. Student in Geosciences</p>
+        
+        <div class="sidebar-info">
+            <strong>Advisor:</strong>
+            <a href="https://geos.vt.edu/people/Everyone/Ying-Zhou.html" target="_blank">Dr. Ying Zhou</a>
+            
+            <strong>Location:</strong>
+            3056 Derring Hall<br>
+            Blacksburg, VA 24061
+            
+            <strong>Email:</strong>
+            <a href="mailto:dziyu25@vt.edu" style="word-break: break-all;">dziyu25@vt.edu</a>
+        </div>
+
+        <a href="DENG_25-26_CV.pdf" class="btn" target="_blank">📄 Download CV</a>
+    </aside>
+
+    <!-- 右侧主内容区 (Main Content) -->
+    <main class="main-content">
+        
+        <!-- 页面内导航 -->
+        <nav>
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#Publications">Publications</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#service">Service</a>
+        </nav>
+
+        <!-- 关于我 -->
+        <section id="about">
+            <h2>About me</h2>
+            <p>Hello! I am a Ph.D. student in the Department of Geosciences at Virginia Tech, working under the supervision of <strong><a href="https://geos.vt.edu/people/Everyone/Ying-Zhou.html" target="_blank">Dr. Ying Zhou</a></strong>.</p>
+            <p>My research focuses on <strong>Seismology</strong>. I am passionate about constraining Core–Mantle Boundary (CMB) and deeper earth structures using differential seismic phases.</p>
+            <p>Prior to joining VT, I received my Bachelor's degree in Geophysics from <strong>Yangtze University</strong> and my Master's degree in Geophysics from the <strong>Institute of Geophysics, China Earthquake Administration</strong>.</p>
+        </section>
+
+        <!-- 研究 -->
+        <section id="research">
+            <h2>Research</h2>
+            
+            <h3>Research Interests</h3>
+            <ul>
+                <li><strong>Core–Mantle Boundary (CMB):</strong> Constraining seismic heterogeneities and topography in the CMB region.</li>
+                <li><strong>Mantle Transition Zone:</strong> Investigating the structural and velocity anomalies in the mantle.</li>
+                <li><strong>Global Seismology & Tomography:</strong> Utilizing traveltimes and finite-frequency techniques to resolve deep earth structures.</li>
+            </ul>
+
+             <h3>Recent Research Activities</h3>
+            <ul>
+                <li>Downloaded and processed seismic data from 2020 to 2025.</li>
+                <li>Obtained ScS-S differential travel time measurements.</li>
+                <li>Performed simple inversions on the data.</li>
+            </ul>
+
+            <h3>Research Plans</h3>
+            <ul>
+                <li>
+                    <strong>Increase Seismic Data Coverage:</strong> Incorporate data from additional earthquakes and seismic stations. <br>
+                    <span style="color: #666; font-size: 0.9em;"><em>Rationale:</em> Expanding the dataset will fill existing spatial gaps in the current ray-path map and ensure more robust inversion results.</span>
+                </li>
+                <li>
+                    <strong>Assess global tomographic models in the lowermost mantle:</strong> Evaluate existing global seismic velocity models (e.g., S40RTS, S362ANI) by comparing predicted and observed differential traveltimes. <br>
+                    <span style="color: #666; font-size: 0.9em;"><em>Rationale:</em> Helps identify model-dependent biases and provides a baseline for interpreting new inversion results.</span>
+                </li>
+                <li>
+                    <strong>Perform Finite-Frequency Tomography:</strong> Apply finite-frequency tomographic techniques to the expanded dataset. <br>
+                    <span style="color: #666; font-size: 0.9em;"><em>Rationale:</em> To resolve a higher-resolution velocity structure of the Core-Mantle Boundary (CMB).</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 演讲与会议 -->
+<!-- 论文与报告 -->
+        <section id="publications">
+            <h2>Publications & Presentations</h2>
+            
+            <h3>Publications</h3>
+            <ul class="pub-list">
+                <li>
+                    <strong>Deng, Z.</strong>, Chen, C., Zhang, R.*, & Qiang, Z. (2025). <em>Spatiotemporal evolution of earthquake relocations and b-value characteristics in the Weiyuan area, southern Sichuan Basin</em>. <strong>Seismology and Geology</strong>. (accepted)
+                </li>
+            </ul>
+
+            <h3>Presentations</h3>
+            <ul class="pub-list">
+                <li>
+                    <strong>Deng, Z.</strong>, & Zhou, Y. (2026). <em>Constraining Seismic Heterogeneities in the Core–Mantle Boundary (CMB) Region Using S and ScS Traveltimes</em>. Oral presentation at the Geosciences Student Research Symposium (GSRS), Virginia Tech, Blacksburg, VA.
+                </li>
+            </ul>
+        </section>
+
+        <!-- 教学 -->
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <ul>
+                <li><strong>Graduate Teaching Assistant</strong> – GEOS 1034: Earth’s Natural Hazards <em>(Fall 2025, Spring 2026)</em></li>
+            </ul>
+        </section>
+
+        <!-- 服务 -->
+        <section id="service">
+            <h2>Service & Outreach</h2>
+            <ul>
+                <li><strong>Volunteer, Invasive Plant Removal and Ecological Restoration</strong> (Blacksburg, VA): Participated in community efforts to remove invasive species (English Ivy and Garlic Mustard) in local parks.</li>
+                <li><strong>Volunteer, Community Tree Planting Initiative</strong> (Blacksburg, VA): Participated in a reforestation effort to improve urban canopy and local air quality, planting native trees.</li>
+            </ul>
+        </section>
+
+    </main>
+</div>
+
+<footer>
+    <p>&copy; 2026 Ziyu Deng. All rights reserved.</p>
+    <p>Virginia Tech, Blacksburg, VA</p>
+</footer>
+
+</body>
+</html>
